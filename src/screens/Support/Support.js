@@ -13,7 +13,8 @@ export default class Support extends Component {
 
     render() {
         return (
-            <View >
+       
+            <View style={{ backgroundColor: '#FFF2CB',flex:1,height}}>
                 <TopHeader text='Support' />
                 <View style={styles.container}>
                     <TouchableOpacity
