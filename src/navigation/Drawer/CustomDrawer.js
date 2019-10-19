@@ -25,9 +25,19 @@ const List = [
         screen:'BlogUser'
     },
     {
-        image: require('../../../assets/orders.png'),
+        image: require('../../../assets/language.png'),
         name: 'Support',
         screen:'Support'
+    },
+    {
+        image: require('../../../assets/refer.png'),
+        name: 'Instructions',
+        screen:'Instructions'
+    },
+    {
+        image: require('../../../assets/refer.png'),
+        name: 'Psychologist',
+        screen:'Psychologist'
     }
 ]
 
@@ -124,8 +134,8 @@ const styles = StyleSheet.create({
     },
     listName: {
         marginHorizontal: 14,
-        color: '#A77248',
-        fontSize: 12,
+        color: '#581400',
+        fontSize: 13,
         fontWeight: '400'
     },
     activeListName: {

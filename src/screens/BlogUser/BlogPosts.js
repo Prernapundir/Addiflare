@@ -20,7 +20,7 @@ export default class BlogPosts extends Component {
                     </View>
                     <View style={styles.textConatiner}>
                         <ScrollView showsVerticalScrollIndicator={false} >
-                            <Text>{props.getParam('content')}</Text>
+                            <Text style={styles.text}>{props.getParam('content')}</Text>
                         </ScrollView>
                     </View>
                 </View>
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#D8D8DB',
+        backgroundColor: '#FFF2CB',
+        // opacity:0.7
     },
     image: {
         width: width * 95 / 100,
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
         width: width * 95 / 100,
         height,
         marginVertical: 15
+    },
+    text:{
+        color:'#581400'
     }
 
 })

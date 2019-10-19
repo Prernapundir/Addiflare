@@ -8,7 +8,7 @@ import TopHeader from '../../components/Header/TopHeader';
 
 
 const data = ['Smoking', 'Drinking', 'Cocain', 'Heroine'];
-
+const privacy = ['public', 'private']
 export default class CommonFile extends Component {
 
 
@@ -22,7 +22,8 @@ export default class CommonFile extends Component {
 
         },
         image: null,
-        active: []
+        active: [],
+        active1:[]
     }
 
     componentDidMount = () => {
@@ -31,6 +32,12 @@ export default class CommonFile extends Component {
             active.push("false")
         }
         this.setState({ active })
+
+        var active1 = []
+        for (let i = 0; i < privacy.length; i++) {
+            active1.push("false")
+        }
+        this.setState({ active1 })
     }
 
     renderData = () => {
@@ -60,6 +67,42 @@ export default class CommonFile extends Component {
         this.setState({ active })
 
     }
+
+    privacyHandler=(index)=>{
+        var active1 = this.state.active1
+
+        for(let i=0;i<privacy.length;i++){
+            if(active1[i]=='true'){
+                active1[i]='false'
+            }
+        }
+
+        for (let i = 0; i < privacy.length; i++) {
+            if (i === index) {
+                if (active1[i] == 'false') {
+                    active1[i] = 'true'
+                } else if (active1[i] == 'true') {
+                    active1[i] = 'false'
+                }
+            }
+        }
+        if(active1[0]=='true'){
+            this.setState({ ...data }) 
+            
+        }else{
+            this.setState({
+                data:{
+                    username: '@username',
+                    name: 'Your Name',
+                    email: 'Email-Id',
+                    mobilenumber: 'Phone Number',
+                },
+                image:null
+            })
+        }
+         
+    }
+
     onChangeText = (name, value) => {
         this.setState(prevState => ({
             data: {
@@ -101,11 +144,12 @@ export default class CommonFile extends Component {
         this.setState({ showDialog: show });
     };
 
+
     render() {
         return (
             <View >
-                <TopHeader />
-                <ImageBackground source={require('../../../assets/backImage.png')} style={styles.image} >
+                <TopHeader text='Profile'/>
+                <ImageBackground source={require('../../../assets/im1.png')} style={styles.image} >
 
                     <TouchableOpacity onPress={this.imagePickHandler} >
                         <View style={styles.circle}>
@@ -161,7 +205,7 @@ export default class CommonFile extends Component {
                         {this.renderData()}
                     </View>
                     <View style={styles.line}></View>
-                    <Image source={require('../../../assets/injection.png')} style={{ width: 100, height: 100, resizeMode: 'cover' }} />
+                    <Image  style={{ width: 100, height: 100, resizeMode: 'cover' }} />
                 </ImageBackground>
                 <Dialog
                     onTouchOutside={() => this.openDialog(false)}
@@ -198,6 +242,19 @@ export default class CommonFile extends Component {
                             onChangeText={(text) => this.onChangeText('mobilenumber', text)}
                             keyboardType='number-pad'
                         />
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            {privacy.map((list, i) => {
+                                return (
+                                    <TouchableOpacity key={i} onPress={() => this.privacyHandler(i)} >
+                                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                            <View style={this.state.active1[i]=='true'?styles.circle2:styles.circle1}></View>
+                                            <Text style={{ color: '#A77248', marginHorizontal: 20 }}>{list}</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                )
+                            })}
+
+                        </View>
                     </View>
                 </Dialog>
             </View>
@@ -215,10 +272,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    circle1:{
+        width: 20, height: 20, borderRadius: 10, borderColor: '#581400', borderWidth: 1 
+    },
+    circle2:{
+        width: 20, height: 20, borderRadius: 10, backgroundColor: '#581400',
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     image: {
         width,
@@ -244,7 +307,7 @@ const styles = StyleSheet.create({
     heading: {
         fontWeight: 'normal',
         color: '#FFE598',
-        fontSize: 30,
+        fontSize: 24,
     },
     text: {
         color: '#FFE598',
@@ -273,7 +336,7 @@ const styles = StyleSheet.create({
     textInput: {
         fontSize: 16,
         alignItems: 'center',
-        color: '#A77248',
+        color: '#581400',
         borderColor: '#581400',
         marginHorizontal: 10,
         borderBottomWidth: 1,
@@ -286,5 +349,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
 
+    },dialog:{
+        backgroundColor:'#FFF2CB',
     }
 })

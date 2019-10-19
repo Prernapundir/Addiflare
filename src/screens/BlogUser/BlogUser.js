@@ -85,8 +85,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#D8D8DB',
-        paddingBottom: 100
+        backgroundColor: '#FFF2CB',
+        paddingBottom: 100,
+         overlayColor: '#FFF2CB',
     },
     blog: {
         width: width * 95 / 100,
