@@ -98,11 +98,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         // paddingBottom:50,
+        
     },
     innerContainer: {
+        backgroundColor: '#FFF2CB',
         width: width * 90 / 100,
         height: height * 0.15,
-        borderColor: '#0000001A',
+        borderColor: '#581400',
+        // backgroundColor:'#FFE598',
         borderWidth: 1,
         borderRadius: 8,
         flexDirection: 'row',

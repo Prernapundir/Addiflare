@@ -22,9 +22,9 @@ export default class Instruction extends React.Component {
     render() {
         return (
 
-            <View>
+            <View  style={{flex:1,height}} >
                 <TopHeader text='Safety Instructions' />
-                <ScrollView >
+                <ScrollView>
              <View style={styles.container}>
                 <View style={{ width: width*0.90, alignItems: 'center', justifyContent: 'center',marginBottom:20 }}>
                     <Image source={require("../../../assets/banner1.jpg")} resizeMode='cover' style={{ marginBottom:20,width: width*0.90,height:height*0.90}}/>
@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
         display:'flex',
         alignItems:'center',
         justifyContent:'center',
-        // backgroundColor:'grey'
+        backgroundColor: '#FFF2CB',
+        marginTop:10,
+        opacity:0.9
+
     }
 })
